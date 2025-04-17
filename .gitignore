@@ -1,0 +1,13 @@
+# Java (Spring)
+target/
+*.class
+
+# Node / React
+client/node_modules/
+client/build/
+client/dist/
+
+# Global
+*.log
+.env
+.DS_Store
