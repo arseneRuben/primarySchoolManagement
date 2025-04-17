@@ -46,6 +46,7 @@ public class StudentService {
     }
 
     public String uploadPhoto(String id, MultipartFile file){
+        log.info("Upload photo for student {}",id);
         Student std = getStudent(id);
         String photoUrl = photoFunction.apply(id, file);
         std.setPhotoUrl(photoUrl);
