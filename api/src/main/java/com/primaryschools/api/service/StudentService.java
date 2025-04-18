@@ -62,15 +62,16 @@ public class StudentService {
         String fileName = id+"_"+fileExtension.apply(image.getOriginalFilename());
         try {
             Path fileStoageAllocation = Paths.get(PHOTO_DIRECTORY).toAbsolutePath().normalize();
-            if(Files.exists(fileStoageAllocation)){
+
+            if(!Files.exists(fileStoageAllocation)){
                 Files.createDirectories(fileStoageAllocation);
-                Files.copy(image.getInputStream(), fileStoageAllocation.resolve(fileName),REPLACE_EXISTING );
-                return ServletUriComponentsBuilder.fromCurrentContextPath().path("/contacts/image/" +fileName).toUriString();
             }
+            Files.copy(image.getInputStream(), fileStoageAllocation.resolve(fileName),REPLACE_EXISTING );
+            return ServletUriComponentsBuilder.fromCurrentContextPath().path("/contacts/image/" +fileName).toUriString();
+
         } catch (Exception e){
             throw new RuntimeException("Unable to save image");
         }
-        return null;
     };
 
 
