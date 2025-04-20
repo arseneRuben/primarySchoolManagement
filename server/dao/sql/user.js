@@ -111,7 +111,7 @@ export const getUserById = async (req, res) => {
 }
 // Authenticate an user
 export const getUser = async (req, res) => {
-    console.log("RERE")
+    console.log(req.body)
     try {
         connect()
         query('SELECT * FROM users  WHERE email=?', [req.body.email], (result) => {

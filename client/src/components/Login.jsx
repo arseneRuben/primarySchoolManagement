@@ -9,7 +9,7 @@ const Login = () => {
 
     const handleSubmit =(event) => {
         event.preventDefault();
-        axios.post('http://localhost:3000/auth/signin')
+        axios.post('http://localhost:3000/auth/signin', values)
         .then(result => console.log(result))
         .catch(err => console.log(err))
     }

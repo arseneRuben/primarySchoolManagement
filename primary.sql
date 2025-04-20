@@ -25,4 +25,18 @@ CREATE TABLE `students` (
   `birth_certificate` varchar(50) DEFAULT NULL,
   `created_at` datetime DEFAULT current_timestamp()
 
-)
+);
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `last_name` varchar(100) DEFAULT NULL,
+  `first_name` varchar(100) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `profile_image` varchar(255) DEFAULT NULL,
+  `phone_number` varchar(100) DEFAULT NULL,
+  `google_id` int(11) DEFAULT NULL,
+  `gender` int(11) DEFAULT NULL,
+  `enabled` int(1) DEFAULT 0,
+  `access_level` enum('personnel','admin') DEFAULT 'personnel'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
