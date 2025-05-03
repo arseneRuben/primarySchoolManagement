@@ -111,7 +111,6 @@ export const getUserById = async (req, res) => {
 }
 // Authenticate an user
 export const getUser = async (req, res) => {
-    console.log(req.body)
     try {
         connect()
         query('SELECT * FROM users  WHERE email=?', [req.body.email], (result) => {
@@ -123,9 +122,12 @@ export const getUser = async (req, res) => {
             }
 
             const token = jwt.sign({ id: result[0].id }, process.env.JWT_SECRET, {
-                expiresIn: "1d" // expires in 24 hours
-            })
-            res.status(HTTP_OK).send({ auth: true, token: token, success: true, access_level:result[0].access_level, user: result[0] })            
+                expiresIn: "1d" // expires in 24 hours,
+               
+            });
+            res.cookie('token', token)
+            // res.status(HTTP_OK).send({ auth: true, token: token, success: true, access_level:result[0].access_level, user: result[0] })            
+            return res.json({loginStatus : true, user: result[0] })
             disconnect()
         })
     } catch (error) {

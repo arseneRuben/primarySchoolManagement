@@ -1,0 +1,12 @@
+{
+  "name": "school-app",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"yarn server\" \"yarn client\"",
+    "server": "yarn --cwd server start",
+    "client": "yarn --cwd client dev"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.0"
+  }
+}
